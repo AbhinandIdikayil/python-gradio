@@ -18,4 +18,6 @@ def apiCall(message, *args):
     return response.json()['message']
 
 
-gr.ChatInterface(fn=apiCall).launch()
+demo = gr.ChatInterface(fn=apiCall)
+if __name__ == "__main__":
+    demo.launch(server_port=7860)
