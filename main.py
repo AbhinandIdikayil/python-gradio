@@ -1,4 +1,5 @@
 import os  # noqa: I001
+from fastapi import FastAPI
 import requests
 import gradio as gr
 from dotenv import load_dotenv
@@ -19,5 +20,6 @@ def apiCall(message, *args):
 
 
 demo = gr.ChatInterface(fn=apiCall)
-if __name__ == "__main__":
-    demo.launch(server_port=7860)
+
+app = FastAPI()
+app = gr.mount_gradio_app(app, demo, path="/")
